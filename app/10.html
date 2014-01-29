@@ -1,0 +1,86 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Mon Application</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css"></head>
+<body>
+
+    <div class="container" ng-controller="myController">
+        <!--img src="images/chat.png" title="Le chat sur la moquette" my-image/-->
+
+
+        <!--h4>{{myTitle}}</h4>
+        <img src="images/chat.png" title="{{myTitle}}" my-image/>
+        <button class="btn btn-default" ng-click="myTitle = 'Le chat'">Change</button-->
+
+        <!--h4>{{myTitle}}</h4>
+        <img src="images/chat.png" title="myTitle" my-image/>
+        <button class="btn btn-default" ng-click="myTitle = 'Le chat'">Change</button-->
+
+        <!--h4>{{myTitle}}</h4>
+        <img src="images/chat.png" title="myTitle" my-image/>
+        <button class="btn btn-default" ng-click="myTitle = 'Le chat'">Change</button-->
+
+        <h4>{{myTitle}}</h4>
+        <img src="images/chat.png" title="myTitle" my-image my-alert="myAlert(myMessage)"/>
+    </div>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myController', function($scope, $log) {
+            $scope.myTitle = 'Le chat qu\'il est content';
+
+            $scope.myAlert = function(message) {
+                //alert('Coucou !');
+                alert(message);
+            }
+        });
+
+        myApp.directive('myImage', function() {
+            return {
+                restrict:'A',
+                link: function(scope, elem, attrs) {
+                    console.log(attrs);
+
+                    //scope.title = attrs.title;
+                },
+
+                //template:'<div>TOTO</div>',
+                replace: true,
+                templateUrl:'templates/myImagePanel.html',
+
+                /*scope:{
+                    //title: 'essai'
+                    title: '@',
+                    src:'@'
+                }*/
+
+                /*scope:{
+                    title: '=',
+                    src:'@'
+                }*/
+
+                scope:{
+                    title: '=',
+                    src:'@',
+                    alert:'&myAlert'
+                }
+            }
+        });
+
+
+    </script>
+
+    <!--script type="text/ng-template" id="templates/myImagePanel.html">
+        <div>TITI</div>
+    </script-->
+
+</body>
+</html>

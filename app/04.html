@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +10,20 @@
     <link rel="stylesheet" href="css/app.css"></head>
 <body>
 
-    <div class="container">
-
+    <div class="container" ng-controller="myController">
+        <button ng-click="alerte();">Message</button>
     </div>
 
     <script src="vendor/angular/angular.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller('myController', function($scope) {
+            $scope.alerte = function() {
+                alert('Je suis là');
+            }
+        });
+    </script>
 
 </body>
 </html>

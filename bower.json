@@ -3,7 +3,8 @@
   "description": "",
   "version": "0.0.1",
   "dependencies": {
-    "angular": ""
+    "angular": "",
+    "angular-i18n": "~1.2.10"
   },
   "devDependencies": {}
 }

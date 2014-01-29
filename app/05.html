@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="myApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +10,22 @@
     <link rel="stylesheet" href="css/app.css"></head>
 <body>
 
-    <div class="container">
-
+    <div class="container" ng-controller="myController">
+        Du fin fond des ténèbres nous entendions une voix: - <i>{{root}}</i>
     </div>
 
     <script src="vendor/angular/angular.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.run(function($rootScope) {
+            $rootScope.root = 'Je suis l\'alpha';
+        });
+
+        myApp.controller('myController', function($scope) {
+
+        });
+    </script>
 
 </body>
 </html>

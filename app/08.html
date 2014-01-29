@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Mon Application</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css"></head>
+<body>
+
+    <div class="container" ng-controller="myController">
+        {{'jE SuiS Là' | lowercase | capitalize}}
+    </div>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myController', function($scope) {
+        });
+
+        myApp.filter('capitalize', function() {
+            return function(text) {
+                return text[0].toUpperCase() + text.slice(1);
+            }
+        });
+    </script>
+
+</body>
+</html>
