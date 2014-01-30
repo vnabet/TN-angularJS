@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Mon Application</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css"></head>
+<body>
+
+    <div class="container" ng-controller="myController">
+        <div my-panel title="{{title}}">{{text}}</div>
+    </div>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myController', function($scope, $log) {
+            $scope.text ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, incidunt, officia, similique voluptate sunt corporis atque enim tempore unde consectetur ad quibusdam deleniti error aliquam odit quidem perspiciatis dolorem. Temporibus, laboriosam distinctio sed maiores doloribus explicabo deleniti eius quos necessitatibus illum tempore illo pariatur a ipsa impedit dicta consectetur quasi.';
+            $scope.title = 'Mon titre';
+        });
+
+        myApp.directive('myPanel', function() {
+            return {
+                restrict:'A',
+                scope: {
+                    title:'@'
+                },
+                templateUrl:'templates/myPanel.html',
+                transclude: true
+            }
+        })
+
+
+    </script>
+</body>
+</html>

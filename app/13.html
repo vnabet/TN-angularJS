@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Mon Application</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css"></head>
+<body>
+
+    <div class="container" ng-controller="myController">
+
+        <input type="text" ng-model="filter.name" class="form-control">
+        <ul class="list-group">
+            <li ng-repeat="item in data.results | orderBy:'name' | filter:filter" class="list-group-item">
+                {{$index}}
+                <img ng-src="{{item.media_url}}" alt="">
+                {{item.name}}
+                <span class="badge" ng-show="item.average_rating">{{item.average_rating || 0}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myController', function($scope, $http) {
+    
+            $http({url:'https://www.twikin.fr/api/game/search/cthulhu', method:'GET'})
+            .success(function(data, status) {
+                console.log(data);
+                $scope.data = data;
+            })
+            .error(function(data, status) {
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Mon Application</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css"></head>
+<body>
+    <h1>Mon Application</h1>
+    <div class="container" ng-view>
+
+        
+    </div>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-route/angular-route.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', ['ngRoute']);
+
+        myApp.controller('myController', function($scope, $routeParams) {
+            console.log($routeParams);
+        });
+        
+        myApp.config(function($routeProvider) {
+            $routeProvider.
+            when('/',{
+                template:'Page Principale <a href="#/lorem/toto/detail/122">Lorem</a>'
+            }).
+            when('/lorem/:name/detail/:id', {
+                templateUrl:'views/lorem.html',
+                controller: 'myController'
+            }).
+            otherwise({
+                redirectTo:'/'
+            })
+        })
+    </script>
+</body>
+</html>
