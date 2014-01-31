@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                         ghostMode: {
                         clicks: true,
                             scroll: true,
-                            links: true,
+                            links: false,
                             forms: true
                     },
                     server: {
